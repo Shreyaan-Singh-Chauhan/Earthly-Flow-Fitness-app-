@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Login - Fitness Chat</title>
+<style>
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #1a1a1a, #2b1d14);
+  color: #fff;
+}
+.login-box {
+  background: #051819;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px #DB9F75;
+  text-align: center;
+}
+input[type="text"] {
+  width: 80%;
+  padding: 12px;
+  border-radius: 25px;
+  border: 1px solid #DB9F75;
+  background: #122324;
+  color: #fff;
+  margin-bottom: 20px;
+}
+button {
+  padding: 12px 30px;
+  border-radius: 25px;
+  border: none;
+  background: #DB9F75;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 0 0 15px #DB9F75;
+  transition: 0.3s;
+}
+button:hover {
+  box-shadow: 0 0 25px #DB9F75;
+}
+</style>
+</head>
+<body>
+<div class="login-box">
+  <h2>Enter your username</h2>
+  <input type="text" id="usernameInput" placeholder="Your name..." />
+  <br>
+  <button onclick="login()">Join Chat</button>
+</div>
+
+<script>
+function login() {
+  const username = document.getElementById("usernameInput").value.trim();
+  if (!username) {
+    alert("Please enter a name!");
+    return;
+  }
+  localStorage.setItem("username", username);
+  window.location.href = "fitness-chat.html";
+}
+</script>
+</body>
+</html>

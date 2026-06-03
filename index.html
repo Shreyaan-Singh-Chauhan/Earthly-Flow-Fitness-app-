@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wellness App - Earthy Flow</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="flowing-background">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+        <div class="blob blob-4"></div>
+        <div class="blob blob-5"></div>
+        <div class="blob blob-6"></div>
+    </div>
+
+    <nav class="expandable-nav">
+        <span class="menu-label">Menu</span>
+        <div class="nav-links">
+            <button type="button" class="nav-tab active" data-target="home">Home</button>
+            <button type="button" class="nav-tab" data-target="journal">Mental Health Journal</button>
+            
+            <button type="button" class="nav-tab" data-target="fitness">Fitness Group</button>
+            <button type="button" class="nav-tab" data-target="medicine">Medicine Alarm</button>
+        </div>
+    </nav>
+
+    <section id="home" class="content-section active">
+        <h1 class="giant-title">WELLNESS</h1>
+    </section>
+
+    <section id="journal" class="content-section">
+        <div class="journal-container">
+            <h2 class="journal-page-title">My Mental Health Journal</h2>
+            
+            <div class="journal-grid" id="journal-grid">
+                <div class="journal-card">
+                    <div class="card-header">
+                        <div class="avatar">S</div>
+                        <div class="user-info">
+                            <span class="name">Sahil Mishra</span>
+                            <span class="time">1m ago</span>
+                        </div>
+                        <button class="edit-btn">Edit</button>
+                        <button class="delete-btn">Delete</button>
+                    </div>
+                    <h3 class="card-title">Day 1</h3>
+                    <p class="card-body">I started my wellness journey today. Feeling hopeful about the process and looking forward to tracking my progress.</p>
+                </div>
+
+                <div class="journal-card">
+                    <div class="card-header">
+                        <div class="avatar">S</div>
+                        <div class="user-info">
+                            <span class="name">Sahil Mishra</span>
+                            <span class="time">Just now</span>
+                        </div>
+                        <button class="edit-btn">Edit</button>
+                        <button class="delete-btn">Delete</button>
+                    </div>
+                    <h3 class="card-title">Day 2</h3>
+                    <p class="card-body">Had a bit of a stressful morning, but used some breathing exercises which really helped center me again.</p>
+                </div>
+            </div>
+
+            <button type="button" class="fab" id="add-journal-btn">+</button>
+        </div>
+    </section>
+
+    <section id="ai" class="content-section">
+        <div class="glass-panel">
+            <h2>AI Companion</h2>
+            <p>Chat with your wellness assistant here.</p>
+        </div>
+    </section>
+
+    <section id="fitness" class="content-section">
+    <div class="glass-panel">
+        <h2>Fitness Group</h2>
+        <p>Connect, share, and track your workout progress.</p>
+
+        <!-- Iframe for chat app -->
+        <iframe src="fitness-chat.html" class="fitness-chat-iframe"></iframe>
+    </div>
+</section>
+
+    <section id="medicine" class="content-section">
+    <div class="glass-panel" id="medicine-panel">
+        <h2>Medicine Alarm</h2>
+        <iframe src="alarm.html" style="width:100%; height:500px; border:none; border-radius:12px;"></iframe>
+    </div>
+</section>
+
+    <div class="modal-overlay" id="journal-modal">
+        <div class="modal-content">
+            <h3 id="modal-title">New Journal Entry</h3>
+            <textarea id="journal-text" rows="12" placeholder="How are you feeling today?"></textarea>
+            <div class="modal-actions">
+                <button type="button" id="cancel-btn" class="btn-cancel">Cancel</button>
+                <button type="button" id="save-btn" class="btn-save">Save Entry</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

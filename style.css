@@ -1,0 +1,147 @@
+/* Reset and Base Styles */
+/* Medicine Alarm iframe full size inside tab */
+/* Make fitness and medicine sections horizontal */
+#fitness .glass-panel,
+#medicine .glass-panel {
+    display: flex;               /* Flex layout */
+    flex-direction: column;      /* content stacked vertically by default */
+    align-items: center;         /* center horizontally */
+    width: 100%;
+    max-width: 1200px;           /* horizontal max width */
+    margin: 0 auto;
+    padding: 30px;
+}
+
+/* Make iframe take full horizontal space */
+.fitness-chat-iframe,
+#medicine-panel iframe {
+    width: 100%;         /* full width of parent */
+    max-width: 1100px;   /* jitna chahiye horizontal */
+    height: 650px;       /* height adjust kar sakte ho */
+    border: 2px solid #DB9F75;
+    border-radius: 15px;
+    margin-top: 20px;
+    display: block;       /* center safely */
+}
+
+/* Optional: bigger glass panel for horizontal appearance */
+.glass-panel {
+    text-align: center;
+    padding: 40px 30px;   /* thoda horizontal padding */
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Helvetica Neue', Inter, Arial, sans-serif;
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Hides the master scrollbar to prevent layout shifts */
+    background-color: #122324;
+}
+
+/* --- CUSTOM WHITE SCROLLBAR --- */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background-color: #FFFFFF; border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background-color: #DDDDDD; }
+
+/* --- Flowing Gradient Background --- */
+.flowing-background {
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    width: 100%; height: 100%; z-index: 0; filter: blur(90px); 
+    transform: scale(1.2); overflow: hidden;
+}
+
+.blob { position: absolute; border-radius: 50%; opacity: 0.85; animation: moveFlow 20s infinite alternate ease-in-out; }
+.blob-1 { width: 70vw; height: 70vw; background: #122324; top: -10%; left: -10%; animation-delay: 0s; }
+.blob-2 { width: 60vw; height: 60vw; background: #2F3A32; bottom: -15%; right: -5%; animation-delay: -3s; }
+.blob-3 { width: 75vw; height: 75vw; background: #545748; top: 20%; left: 30%; animation-delay: -6s; }
+.blob-4 { width: 55vw; height: 55vw; background: #DB9F75; bottom: 20%; left: 15%; animation-delay: -9s; opacity: 0.7; }
+.blob-5 { width: 65vw; height: 65vw; background: #804012; top: 35%; right: 25%; animation-delay: -12s; }
+.blob-6 { width: 80vw; height: 80vw; background: #3E2411; bottom: -10%; left: 40%; animation-delay: -15s; }
+
+@keyframes moveFlow {
+    0% { transform: translate(0, 0) scale(1) rotate(0deg); }
+    33% { transform: translate(10vw, 8vh) scale(1.15) rotate(45deg); }
+    66% { transform: translate(-8vw, 12vh) scale(0.9) rotate(90deg); }
+    100% { transform: translate(-12vw, -10vh) scale(1.25) rotate(180deg); }
+}
+
+/* --- Expanding Glass Menu (Bottom Center) --- */
+.expandable-nav {
+    position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); 
+    background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 40px; height: 54px; width: 110px; 
+    display: flex; align-items: center; justify-content: center; overflow: hidden; cursor: pointer;
+    transition: width 0.5s cubic-bezier(0.25, 1, 0.5, 1), background 0.3s ease;
+    z-index: 50; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+.expandable-nav:hover { width: 760px; background: rgba(255, 255, 255, 0.15); }
+.menu-label { position: absolute; color: rgba(255, 255, 255, 0.9); font-size: 16px; font-weight: 500; transition: opacity 0.3s ease, transform 0.3s ease; }
+.expandable-nav:hover .menu-label { opacity: 0; transform: scale(0.5); pointer-events: none; }
+.nav-links { display: flex; gap: 8px; opacity: 0; transform: scale(0.95); transition: opacity 0.4s ease 0.15s, transform 0.4s ease 0.15s; pointer-events: none; white-space: nowrap; }
+.expandable-nav:hover .nav-links { opacity: 1; transform: scale(1); pointer-events: auto; }
+.nav-tab { background: transparent; border: none; color: rgba(255, 255, 255, 0.75); font-size: 14px; font-weight: 500; cursor: pointer; padding: 10px 18px; border-radius: 30px; transition: all 0.3s ease; }
+.nav-tab:hover, .nav-tab.active { background: rgba(255, 255, 255, 0.25); color: #FFFFFF; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+
+/* --- Content Sections & Animations --- */
+.content-section {
+    position: absolute; top: 0; left: 0; 
+    width: 100vw; height: 100vh;
+    display: flex; justify-content: center; align-items: center;
+    z-index: 5; opacity: 0; pointer-events: none; transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.content-section.active { opacity: 1; pointer-events: auto; transform: translateY(0); }
+#journal { align-items: flex-start; overflow-y: auto; overflow-x: hidden; }
+.giant-title { font-size: 14vw; color: #F5E6D3; font-weight: 900; letter-spacing: -0.02em; text-shadow: 0 10px 40px rgba(0, 0, 0, 0.4); text-align: center; white-space: nowrap; }
+.glass-panel { background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 24px; padding: 60px; text-align: center; color: #F5E6D3; width: 90%; max-width: 700px; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2); }
+
+/* --- Mental Health Journal Grid UI --- */
+.journal-container { width: 90%; height: auto; min-height: 100%; max-width: 1200px; display: flex; flex-direction: column; position: relative; padding-top: 60px; margin: 0 auto; }
+.journal-page-title { color: #F5E6D3; font-size: 32px; margin-bottom: 30px; text-shadow: 0 4px 10px rgba(0,0,0,0.3); text-align: center; }
+.journal-grid { display: flex; flex-wrap: wrap; gap: 20px; padding-bottom: 120px; justify-content: center; align-content: flex-start; }
+
+/* The Solid White Cards */
+.journal-card {
+    background-color: #FFFFFF !important; border-radius: 12px !important; padding: 20px; width: 300px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3); display: flex; flex-direction: column; gap: 12px; color: #222222 !important; text-align: left;
+}
+.card-header { display: flex; align-items: center; gap: 10px; }
+.avatar { width: 32px; height: 32px; background: #4A6572; color: white; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-weight: bold; font-size: 14px; }
+.user-info { display: flex; flex-direction: column; flex-grow: 1; } /* Pushes Edit/Delete buttons to the right */
+.user-info .name { font-size: 13px; font-weight: 600; color: #222 !important; }
+.user-info .time { font-size: 11px; color: #777 !important; }
+
+/* Edit & Delete Button Styling */
+.edit-btn, .delete-btn { background: transparent; border: none; color: #888; font-size: 13px; font-weight: 500; cursor: pointer; text-decoration: underline; transition: color 0.2s ease; margin-left: 5px; }
+.edit-btn:hover { color: #00A67E; }
+.delete-btn:hover { color: #E74C3C; } /* Red alert color for deletion */
+
+.card-title { font-size: 18px; font-weight: 700; color: #111 !important; margin-bottom: 5px; }
+.card-body { font-size: 14px; line-height: 1.5; word-break: break-word; color: #444 !important; white-space: pre-wrap; }
+
+/* Floating Action Button (+) */
+.fab { position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; border-radius: 50%; background: #00A67E; color: white; font-size: 30px; border: none; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.3); transition: transform 0.2s ease; z-index: 20; }
+.fab:hover { transform: scale(1.1); }
+
+/* --- Modal (Popup) Styling --- */
+.modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); backdrop-filter: blur(5px); z-index: 100; justify-content: center; align-items: center; }
+.modal-overlay.active { display: flex; }
+
+.modal-content {
+    background: white; padding: 24px; border-radius: 12px; 
+    width: 700px; 
+    max-width: 95%; 
+    display: flex; flex-direction: column; gap: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+.modal-content h3 { color: #333; }
+.modal-content textarea { width: 100%; padding: 12px; border: 1px solid #CCC; border-radius: 8px; resize: none; font-family: inherit; font-size: 15px; }
+.modal-actions { display: flex; justify-content: flex-end; gap: 10px; }
+.modal-actions button { padding: 10px 16px; border-radius: 6px; border: none; font-weight: 600; cursor: pointer; }
+.btn-cancel { background: #EEE; color: #333; }
+.btn-save { background: #00A67E; color: white; }
